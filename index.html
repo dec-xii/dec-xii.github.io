@@ -1,26 +1,32 @@
-<title>Home Page</title>
-<head></head>
-<meta author="Declan">
-<body>
-    <img src="Savannah.png" alt="Savannah">
-    <h1>Savannah, Ga.</h1>
-    <h2>The Sunshine City!</h2>
-    <p>Welcome to Savannah Georgia, </p>
-    <p>We are a historic ghost town. We love peaches and sweet tea! </p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-    <p>Delectus atque, repellat eos fugit in recusandae tempora eum inventore nesciunt. Aliquam cupiditate ullam minus. Consectetur distinctio doloremque id asperiores suscipit. Natus.</p>
-    <br>
-    <p>Other sites to see:</p>
-    <ul type="1">
-        <li>place one</li>
-        <li>place two</li>
-        <li>place three</li>
-        <li>place four</li>
-    </ul>
-    <br>
-    <br>
-    <a href="About.html"><img src="about.jpg" alt="About Us"></a>
-    <a href="page 3.html">page3</a>
-    <a href="page 4.html">page4</a>
+<!DOCTYPE html>
+<head>
+    <title></title>
+    <script src="CSV/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="CSV/style.css"/>
+</head>
 
+<body>
+    <div class="button-container">
+        <div class="button-wrap">
+            <label class="button" for="upload">Upload File</label>
+            <input type="file" id="upload" accept=".csv" onchange="loadContent()" hidden/>
+            <h1 id="title" class="custom-text">Please Select a File</h1>
+            <button onclick="toggleMetadata()" class="metadata-button hide" id="toggleMetadata">Show Meta Data</button>
+        </div>
+    </div>
+
+    <div class="table-wrapper hide" id="metaData">
+        <table class="fl-table">
+            <thead id="metaData-head"></thead>
+            <tbody id="metaData-body"></tbody>
+        </table>
+    </div>
+
+    <div class="table-wrapper" id="data">
+        <table class="fl-table">
+            <thead id="dataView-head"></thead>
+            <tbody id="dataView-body"></tbody>
+        </table>
+    </div>
 </body>
