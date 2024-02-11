@@ -5,191 +5,172 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
+
+html {
+  height: 100%;
+}
+
 body {
   font-family: Helvetica;
   -webkit-font-smoothing: antialiased;
-  background: rgba(71, 147, 227, 1);
+  background: rgb(255, 51, 153);
+  height: 100%;
 }
 
-.custom-text {
-  text-transform: uppercase;
-  color: white;
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.219);
-}
-
-h2 {
+h1 {
   text-align: center;
-  font-size: 18px;
+  font-size: 46px;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: white;
   padding: 30px 0;
 }
 
-.button-container {
-  margin: 10px 70px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  width: 100%;
-}
-
-input[type="file"] {
-  position: absolute;
-  z-index: -1;
-  top: 10px;
-  left: 8px;
-  font-size: 17px;
-  color: #b8b8b800;
-}
-.button-wrap {
+/*Beating heart*/
+#heart {
+  width: 300px;
+  height: 300px;
+  background-color: red;
+  margin: 200px auto;
   position: relative;
-}
-.button {
-  display: inline-block;
-  padding: 12px 18px;
-  cursor: pointer;
-  border-radius: 5px;
-  background-color: #4fc3a1;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.322);
-}
-.metadata-button {
-  display: inline-block;
-  cursor: pointer;
-  border-radius: 5px;
-  background-color: #4fc3a1;
-  font-weight: bold;
-  color: #fff;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.322);
-  border-width: 0px;
+  transform: rotate(45deg);
+  -webkit-animation: example 0.3s linear 1s infinite alternate;
+  z-index: 0;
 }
 
-.hide {
-  display: none;
+#heart:after {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  position: absolute;
+  content: "";
+  top: 0px;
+  left: -150px;
+  background-color: red;
+  box-shadow: 0 0 40px rgba(213, 9, 60, 1);
+  -webkit-animation: examp 0.5s linear 1s infinite alternate;
+  /*border-top:1px solid rgba(213,9,60,1);
+border-left:0px solid rgba(213,9,60,1);*/
+  z-index: 2;
 }
 
-/* Table Styles */
-
-.table-wrapper {
-  margin: 10px 70px 70px;
-  box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.596);
+#heart:before {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  position: absolute;
+  content: "";
+  top: -150px;
+  right: 0px;
+  background-color: red;
+  box-shadow: 0 0 40px rgba(213, 9, 60, 1);
+  -webkit-animation: examp 0.5s linear 1s infinite alternate;
+  z-index: -1;
 }
 
-.fl-table {
-  border-radius: 5px;
-  font-size: 12px;
-  font-weight: normal;
-  border: none;
-  border-collapse: collapse;
+@-webkit-keyframes example {
+  0% {
+    -webkit-transform: scale(1, 1) rotate(45deg);
+    box-shadow: 0 0 40px rgba(213, 9, 60, 1);
+  }
+
+  100% {
+    -webkit-transform: scale(1.1, 1.1) rotate(45deg);
+    box-shadow: 0 0 40px rgba(213, 9, 60, .6);
+  }
+}
+
+@-webkit-keyframes examp {
+  0% {
+    box-shadow: 0 0 40px rgba(213, 9, 60, 1);
+  }
+
+  100% {
+    box-shadow: 0 0 40px rgba(213, 9, 60, .6);
+  }
+}
+
+/* Heart css*/
+.bg_heart {
+  position: relative;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 100%;
-  white-space: nowrap;
-  background-color: white;
+  height: 100%;
+  overflow: hidden
 }
 
-.fl-table td,
-.fl-table th {
-  text-align: center;
-  padding: 8px;
+.heart {
+  position: absolute;
+  top: -50%;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -m-transform: rotate(-45deg);
+  transform: rotate(-45deg)
 }
 
-.fl-table td {
-  font-size: 12px;
+.heart:before {
+  position: absolute;
+  top: -50%;
+  left: 0;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: 100%;
 }
 
-.fl-table thead th {
-  color: #ffffff;
-  background: #4fc3a1;
-  font-size: 1.2em;
+.heart:after {
+  position: absolute;
+  top: 0;
+  right: -50%;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: 100%;
 }
 
-.fl-table thead th:nth-child(odd) {
-  color: #ffffff;
-  background: #324960;
+@-webkit-keyframes love {
+  0% {
+    top: 110%
+  }
 }
 
-.fl-table tr:nth-child(odd) {
-  background: #ffffff;
+@-moz-keyframes love {
+  0% {
+    top: 110%
+  }
 }
 
-.fl-table tr:nth-child(odd) {
-  background: #ffffff;
-  font-weight: bold;
+@-ms-keyframes love {
+  0% {
+    top: 110%
+  }
 }
 
-.fl-table tr:nth-child(even) {
-  background: #cecece;
-  font-weight: bold;
+@keyframes love {
+  0% {
+    top: 110%
+  }
 }
 
-/* Responsive */
-
-@media (max-width: 767px) {
-  .fl-table {
-    display: block;
-    width: 100%;
-  }
-  .table-wrapper:before {
-    content: "Scroll horizontally >";
-    display: block;
-    text-align: right;
-    font-size: 11px;
-    color: white;
-    padding: 0 0 10px;
-  }
-  .fl-table thead,
-  .fl-table tbody,
-  .fl-table thead th {
-    display: block;
-  }
-  .fl-table thead th:last-child {
-    border-bottom: none;
-  }
-  .fl-table thead {
-    float: left;
-  }
-  .fl-table tbody {
-    width: auto;
-    position: relative;
-    overflow-x: auto;
-  }
-  .fl-table td,
-  .fl-table th {
-    padding: 20px 0.625em 0.625em 0.625em;
-    height: 60px;
-    vertical-align: middle;
-    box-sizing: border-box;
-    overflow-x: hidden;
-    overflow-y: auto;
-    width: 120px;
-    font-size: 13px;
-    text-overflow: ellipsis;
-  }
-  .fl-table thead th {
-    text-align: left;
-    border-bottom: 1px solid #f7f7f9;
-  }
-  .fl-table tbody tr {
-    display: table-cell;
-  }
-  .fl-table tbody tr:nth-child(odd) {
-    background: none;
-  }
-  .fl-table tr:nth-child(even) {
-    background: transparent;
-  }
-  .fl-table tr td:nth-child(odd) {
-    background: #f8f8f8;
-    border-right: 1px solid #e6e4e4;
-  }
-  .fl-table tr td:nth-child(even) {
-    border-right: 1px solid #e6e4e4;
-  }
-  .fl-table tbody td {
-    display: block;
-    text-align: center;
-  }
+/* Overlay vingette */
+.overlay {
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+  background: -webkit-radial-gradient(rgba(127, 127, 127, 0.5),
+      rgba(127, 127, 127, 0.5) 80%,
+      rgba(0, 0, 0, 0.7));
+  bottom: 0;
+  display: -webkit-box;
+  left: 0;
+  padding: 20px;
+  padding-bottom: 130px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 10;
 }

@@ -1,32 +1,17 @@
 <!DOCTYPE html>
+
 <head>
-    <title></title>
-    <script src="script.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <link rel="stylesheet" href="style.css"/>
+  <title>Happy Valentine's Day!</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="/script.js"></script>
+  <link rel="stylesheet" href="/style.css" />
 </head>
 
 <body>
-    <div class="button-container">
-        <div class="button-wrap">
-            <label class="button" for="upload">Upload File</label>
-            <input type="file" id="upload" accept=".csv" onchange="loadContent()" hidden/>
-            <h1 id="title" class="custom-text">Please Select a File</h1>
-            <button onclick="toggleMetadata()" class="metadata-button hide" id="toggleMetadata">Show Meta Data</button>
-        </div>
-    </div>
-
-    <div class="table-wrapper hide" id="metaData">
-        <table class="fl-table">
-            <thead id="metaData-head"></thead>
-            <tbody id="metaData-body"></tbody>
-        </table>
-    </div>
-
-    <div class="table-wrapper" id="data">
-        <table class="fl-table">
-            <thead id="dataView-head"></thead>
-            <tbody id="dataView-body"></tbody>
-        </table>
-    </div>
+  <div id="header-plugin"></div>
+  <div class="bg_heart">
+    <h1>Happy Valentine's Day!</h1>
+    <div id="heart"></div>
+    <h1>I love you!</h1>
+  </div>
 </body>

@@ -1,107 +1,27 @@
-var GLvar = {
-  data: [],
-  file: [],
-};
+$(function() {
+    console.log( "ready!" );
+});
 
-function populateTable() {
-  var i,
-    str = "";
-  const regex = /(.+)+(\.csv)/;
+$( "#header-plugin" ).load( "https://vivinantony.github.io/header-plugin/", function() {
+	$("a.back-to-link").attr("href", "http://blog.thelittletechie.com/2015/03/love-heart-animation-using-css3.html#tlt")  
+});
 
-  $(".metadata-button").removeClass("hide");
+var love = setInterval(function() {
+    var r_num = Math.floor(Math.random() * 40) + 1;
+    var r_size = Math.floor(Math.random() * 65) + 10;
+    var r_left = Math.floor(Math.random() * 100) + 1;
+    var r_bg = Math.floor(Math.random() * 25) + 100;
+    var r_time = Math.floor(Math.random() * 5) + 5;
 
-  console.log(GLvar.file.name.match(regex)[1]);
+    $('.bg_heart').append("<div class='heart' style='width:" + r_size + "px;height:" + r_size + "px;left:" + r_left + "%;background:rgba(255," + (r_bg - 25) + "," + r_bg + ",1);-webkit-animation:love " + r_time + "s ease;-moz-animation:love " + r_time + "s ease;-ms-animation:love " + r_time + "s ease;animation:love " + r_time + "s ease'></div>");
 
-  // Populate Header
-  $("#title").html(GLvar.file.name.match(regex)[1]);
+    $('.bg_heart').append("<div class='heart' style='width:" + (r_size - 10) + "px;height:" + (r_size - 10) + "px;left:" + (r_left + r_num) + "%;background:rgba(255," + (r_bg - 25) + "," + (r_bg + 25) + ",1);-webkit-animation:love " + (r_time + 5) + "s ease;-moz-animation:love " + (r_time + 5) + "s ease;-ms-animation:love " + (r_time + 5) + "s ease;animation:love " + (r_time + 5) + "s ease'></div>");
 
-  // Grab the keys to populate table head
-  str += "<th>Rows</th>";
-  str += "<th>File Name</th>";
-  str += "<th>Size</th>";
-  $("#metaData-head").html(str);
-  str = "";
-
-  str += "<td>" + GLvar.data.length + "</td>";
-  str += "<td>" + GLvar.file.name + "</td>";
-  str += "<td>" + GLvar.file.size / 1000 + " KB</td>";
-  $("#metaData-body").html(str);
-  str = "";
-
-  // Grab the keys to populate table head
-  str += "<th>Row</th>";
-
-  for (let [key, value] of Object.entries(GLvar.data[0])) {
-    str += "<th>" + key + "</th>";
-  }
-  $("#dataView-head").html(str);
-  str = "";
-
-  // Populate table body
-  i = 0;
-  GLvar.data.forEach((element) => {
-    str += "<tr><td>" + ++i + "</td>";
-    for (let [key, value] of Object.entries(element)) {
-      str += "<td>" + value + "</td>";
-    }
-    str += "</tr>";
-  });
-  $("#dataView-body").html(str);
-}
-
-// convert csv to json
-function csvJSON(csvText) {
-  let lines = [];
-  const linesArray = csvText.split("\n");
-  // for trimming and deleting extra space
-  linesArray.forEach((e) => {
-    const row = e.replace(/[\s]+[,]+|[,]+[\s]+/g, ",").trim();
-    lines.push(row);
-  });
-  // for removing empty record
-  lines.splice(lines.length - 1, 1);
-  const result = [];
-  const headers = lines[0].split(",");
-
-  for (let i = 1; i < lines.length; i++) {
-    const obj = {};
-    const currentline = lines[i].split(",");
-
-    for (let j = 0; j < headers.length; j++) {
-      obj[headers[j]] = currentline[j];
-    }
-    result.push(obj);
-  }
-
-  return result;
-}
-
-function loadContent() {
-  const [file] = document.querySelector("input[type=file]").files;
-  const reader = new FileReader();
-  console.log(file);
-  reader.addEventListener(
-    "load",
-    () => {
-      console.log("results=" + reader.result);
-      if (reader.result != "") {
-        GLvar.data = csvJSON(reader.result);
-        GLvar.file = file;
-        populateTable();
-      }
-    },
-    false
-  );
-  if (file) {
-    reader.readAsText(file);
-  }
-}
-
-function toggleMetadata() {
-  $("#metaData").toggle("fast", function () {
-    var text = $("#toggleMetadata").text();
-    $("#toggleMetadata").text(
-      text.indexOf("Show") > -1 ? "Hide Meta Data" : "Show Meta Data"
-    );
-  });
-}
+    $('.heart').each(function() {
+        var top = $(this).css("top").replace(/[^-\d\.]/g, '');
+        var width = $(this).css("width").replace(/[^-\d\.]/g, '');
+        if (top <= -100 || width >= 150) {
+            $(this).detach();
+        }
+    });
+}, 500);
